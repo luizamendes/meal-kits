@@ -1,9 +1,7 @@
 import { Routes } from "./routes";
 
-const App = () => {
-  return (
-    <Routes />
-  );
-}
+const App = (): JSX.Element => {
+  return <Routes />;
+};
 
 export default App;
