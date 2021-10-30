@@ -1,9 +1,9 @@
 import { Protein } from "../../models/Protein";
 import { capitalizeFirstLetter } from "../../utils/String";
 
-type ProteinDisplayProps = {
+interface ProteinDisplayProps {
   protein: Protein;
-};
+}
 
 export const ProteinDisplay = ({ protein }: ProteinDisplayProps) => {
   const { name, code } = protein;

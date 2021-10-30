@@ -26,26 +26,17 @@ export const Orders = () => {
 
   // Fetch orders, items and meats from APIs
   useEffect(() => {
-    const fetchOrders = async () => {
-      const { data: ordersList } = await getOrders();
-      if (ordersList) setOrders(ordersList);
-    };
+    getOrders()
+      .then(({ data }) => setOrders(data))
+      .catch((error) => console.log(error));
 
-    const fetchItems = async () => {
-      const { data: itemsList } = await getItems();
+    getItems()
+      .then(({ data }) => setItems(data))
+      .catch((error) => console.log(error));
 
-      if (itemsList) setItems(itemsList);
-    };
-
-    const fetchMeatInfo = async () => {
-      const { data: meatTypes } = await getProteins();
-
-      if (meatTypes) setProteins(meatTypes);
-    };
-
-    fetchOrders();
-    fetchItems();
-    fetchMeatInfo();
+    getProteins()
+      .then(({ data }) => setProteins(data))
+      .catch((error) => console.log(error));
   }, []);
 
   // Getting current order

@@ -2,12 +2,6 @@ import { ButtonHTMLAttributes } from "react";
 import cx from "classnames";
 import style from "./Button.module.scss";
 
-export type ButtonProps = {
-  active?: boolean;
-  secondary?: boolean;
-  borderless?: boolean;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
-
 export const Button = ({
   className = "",
   ...props

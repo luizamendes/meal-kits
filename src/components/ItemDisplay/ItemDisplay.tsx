@@ -3,17 +3,17 @@ import cx from "classnames";
 import { Stamp } from "../Stamp";
 import style from "./ItemDisplay.module.scss";
 
-export type ItemDisplayProps = {
+interface ItemDisplayProps extends HTMLAttributes<HTMLDivElement> {
   children: JSX.Element;
   outOfStock?: boolean;
   station: string;
   type: "general" | "protein";
-} & HTMLAttributes<HTMLDivElement>;
+}
 
 export const ItemDisplay = ({
   className = "",
   children,
-  outOfStock,
+  outOfStock = false,
   station,
   type,
   ...props

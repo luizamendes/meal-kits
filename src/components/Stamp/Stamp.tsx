@@ -2,10 +2,10 @@ import { HTMLAttributes } from "react";
 import cx from "classnames";
 import style from "./Stamp.module.scss";
 
-export type StampProps = {
+export interface StampProps extends HTMLAttributes<HTMLSpanElement> {
   text: string;
   type?: "oos";
-} & HTMLAttributes<HTMLSpanElement>;
+}
 
 export const Stamp = ({ text, type, className = "", ...props }: StampProps) => {
   const classes = cx(style.stamp, {
