@@ -3,15 +3,10 @@ import { getOrders, getItems, getProteins } from "../../api";
 import { Order } from "../../models/Order";
 import { Item } from "../../models/Item";
 import { Protein } from "../../models/Protein";
-import {
-  Button,
-  ItemDisplay,
-  GeneralItemDisplay,
-  ProteinItemDisplay,
-  Loading,
-} from "../../components";
+import { Button, Loading } from "../../components";
 import { itemHasMeat, getMeatCode } from "../../utils/Meat";
 import { ProteinShelf } from "./components/ProteinShelf";
+import { logger } from "../../services/sentry";
 
 import style from "./Orders.module.scss";
 import { GeneralShelf } from "./components/GeneralShelf";
@@ -30,15 +25,21 @@ export const Orders = () => {
   useEffect(() => {
     getOrders()
       .then(({ data }) => setOrders(data))
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        logger(`Logger :: Error fetching orders :: ${error.message}`)
+      );
 
     getItems()
       .then(({ data }) => setItems(data))
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        logger(`Logger :: Error fetching items :: ${error.message}`)
+      );
 
     getProteins()
       .then(({ data }) => setProteins(data))
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        logger(`Logger :: Error fetching proteins :: ${error.message}`)
+      );
   }, []);
 
   // Getting current order

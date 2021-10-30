@@ -1,8 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "./index.scss";
+
+const sentry = process.env.REACT_APP_SENTRY_URL;
+
+Sentry.init({
+  dsn: sentry,
+  integrations: [new Integrations.BrowserTracing()],
+  tracesSampleRate: 1.0,
+});
 
 ReactDOM.render(
   <React.StrictMode>
