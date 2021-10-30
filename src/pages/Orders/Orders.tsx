@@ -3,8 +3,13 @@ import { getOrders, getItems, getProteins } from "../../api";
 import { IOrder } from "../../models/Order";
 import { IItem } from "../../models/Item";
 import { IProtein } from "../../models/Protein";
-import { Button, ItemDisplay } from "../../components";
-import { itemHasMeat, getMeatCode, capitalizeFirstLetter } from "../../utils";
+import {
+  Button,
+  ItemDisplay,
+  GeneralDisplay,
+  ProteinDisplay,
+} from "../../components";
+import { itemHasMeat, getMeatCode } from "../../utils";
 
 import style from "./Orders.module.scss";
 
@@ -78,29 +83,12 @@ export const Orders = () => {
 
             return (
               <ItemDisplay
-                // item={item}
                 className={`${style[`grid-${item.station}`]} ${style.item}`}
                 key={item.id}
                 station={item.station}
                 outOfStock={item.volume <= 0}
               >
-                <>
-                  <p>
-                    <span>Id:</span> {item.id}
-                  </p>
-                  <p>
-                    <span>Name:</span>
-                    {capitalizeFirstLetter(item.name)}
-                  </p>
-                  <p>
-                    <span>Category:</span>
-                    {capitalizeFirstLetter(item.category)}
-                  </p>
-                  <p>
-                    <span>Quantity:</span>
-                    {item.volume}
-                  </p>
-                </>
+                <GeneralDisplay item={item} />
               </ItemDisplay>
             );
           })}
@@ -117,16 +105,7 @@ export const Orders = () => {
                   key={protein.code}
                   station={protein.station}
                 >
-                  <>
-                    <p>
-                      <span>Protein name:</span>
-                      {capitalizeFirstLetter(protein.name)}
-                    </p>
-                    <p>
-                      <span>Protein code:</span>
-                      {protein.code}
-                    </p>
-                  </>
+                  <ProteinDisplay protein={protein} />
                 </ItemDisplay>
               ))}
             </div>
