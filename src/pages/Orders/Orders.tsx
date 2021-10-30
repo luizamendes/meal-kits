@@ -20,10 +20,9 @@ export const Orders = () => {
   const [proteins, setProteins] = useState<IProtein[]>([]);
 
   const [currentOrderIndex, setCurrentOrderIndex] = useState(0);
-  const [currentOrder, setOrder] = useState<IOrder>();
-  const [itemsMap, setItemsMap] = useState<IItem[]>([]);
+  const [currentOrder, setCurrentOrder] = useState<IOrder>();
+  const [itemsOfOrder, setItemsOfOrder] = useState<IItem[]>([]);
   const [proteinsOfOrder, setProteinsOfOrder] = useState<IProtein[]>([]);
-  const [loading, setLoading] = useState(false);
 
   // Fetch orders, items and meats from APIs
   useEffect(() => {
@@ -52,7 +51,7 @@ export const Orders = () => {
   // Getting current order
   useEffect(() => {
     const current = orders[currentOrderIndex];
-    if (current) setOrder(current);
+    if (current) setCurrentOrder(current);
   }, [orders, currentOrderIndex]);
 
   // Getting items of the order
@@ -61,14 +60,14 @@ export const Orders = () => {
       const currentItems = items.filter((item) =>
         currentOrder?.items.includes(item.id)
       );
-      setItemsMap(currentItems);
+      setItemsOfOrder(currentItems);
     }
   }, [items, currentOrder]);
 
   // Getting meats of the order
   useEffect(() => {
     // Getting meat codes of current order
-    const meatsOfOrder = itemsMap
+    const meatsOfOrder = itemsOfOrder
       .filter((item) => itemHasMeat(item.displayName))
       .map((item) => getMeatCode(item.displayName));
 
@@ -78,10 +77,10 @@ export const Orders = () => {
     );
 
     setProteinsOfOrder(meatTypesOfOrder);
-  }, [proteins, itemsMap]);
+  }, [proteins, itemsOfOrder]);
 
   const RenderOrder = () => {
-    if (!currentOrder || !itemsMap.length) return <Loading />;
+    if (!currentOrder || !itemsOfOrder.length) return <Loading />;
     const { id } = currentOrder;
 
     return (
@@ -89,7 +88,7 @@ export const Orders = () => {
         <h2>Order #{id}</h2>
         <h3>General</h3>
         <div className={`${style.grid} ${style.grid__general}`}>
-          {itemsMap.map((item) => {
+          {itemsOfOrder.map((item) => {
             if (item.id === 130) item.station = "B4";
 
             return (
@@ -136,7 +135,6 @@ export const Orders = () => {
 
   return (
     <main className={style.main}>
-      {loading && <Loading />}
       <h1>Scanned orders</h1>
       <RenderOrder />
       <Button onClick={nextOrder} className={style.button}>
