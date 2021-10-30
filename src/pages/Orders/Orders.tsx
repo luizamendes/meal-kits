@@ -3,7 +3,7 @@ import { getOrders, getItems, getProteins } from "../../api";
 import { IOrder } from "../../models/Order";
 import { IItem } from "../../models/Item";
 import { IProtein } from "../../models/Protein";
-import { Button } from "../../components";
+import { Button, ItemDisplay } from "../../components";
 import { itemHasMeat, getMeatCode } from "../../utils";
 
 import style from "./Orders.module.scss";
@@ -86,9 +86,11 @@ export const Orders = () => {
             const grid = item.id === 130 ? "grid-B4" : `grid-${item.station}`;
 
             return (
-              <div className={`${style[grid]} ${style.item}`} key={item.id}>
-                {item.name}
-              </div>
+              <ItemDisplay
+                item={item}
+                className={`${style[grid]} ${style.item}`}
+                key={item.id}
+              />
             );
           })}
         </div>
