@@ -33,15 +33,6 @@ export const Orders = () => {
   useEffect(() => {
     const fetchItems = async () => {
       let { data: itemsList } = await getItems();
-      // const itemsTemp: IItem[] = [];
-
-      // if (itemsList && itemsList.length > 0) {
-      //   itemsList.forEach((item) => {
-      //     if (currentOrder?.items.includes(item.id)) {
-      //       itemsTemp.push(item);
-      //     }
-      //   });
-      // }
 
       if (itemsList && itemsList.length > 0) {
         itemsList = itemsList.filter((item) =>
@@ -83,12 +74,12 @@ export const Orders = () => {
         <h3>Order # {id}</h3>
         <div className={`${style.grid} ${style.grid__general}`}>
           {itemsMap.map((item) => {
-            const grid = item.id === 130 ? "grid-B4" : `grid-${item.station}`;
+            if (item.id === 130) item.station = "B4";
 
             return (
               <ItemDisplay
                 item={item}
-                className={`${style[grid]} ${style.item}`}
+                className={`${style[`grid-${item.station}`]} ${style.item}`}
                 key={item.id}
               />
             );
@@ -118,6 +109,8 @@ export const Orders = () => {
   const nextOrder = () => {
     if (currentOrderIndex < orders.length - 1) {
       setCurrentOrderIndex(currentOrderIndex + 1);
+    } else {
+      setCurrentOrderIndex(0);
     }
   };
 
@@ -125,7 +118,9 @@ export const Orders = () => {
     <section>
       <h1>Orders</h1>
       <RenderOrder />
-      <Button onClick={nextOrder}>Next Order</Button>
+      <Button onClick={nextOrder} className={style.button}>
+        Next Order
+      </Button>
     </section>
   );
 };

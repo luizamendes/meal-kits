@@ -1,4 +1,6 @@
 import { ButtonHTMLAttributes } from "react";
+import cx from "classnames";
+import style from "./Button.module.scss";
 
 export type TButtonProps = {
   active?: boolean;
@@ -6,6 +8,13 @@ export type TButtonProps = {
   borderless?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 
-export const Button = (props: ButtonHTMLAttributes<HTMLButtonElement>) => {
-  return <button type="button" {...props} />;
+export const Button = ({
+  className = "",
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement>) => {
+  const classes = cx(style.main, {
+    [className]: !!className,
+  });
+
+  return <button type="button" className={classes} {...props} />;
 };

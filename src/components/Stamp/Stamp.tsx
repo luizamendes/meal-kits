@@ -4,7 +4,7 @@ import style from "./Stamp.module.scss";
 
 export type TStampProps = {
     text: string;
-    type?: "oot";
+    type?: "oos";
 } & HTMLAttributes<HTMLSpanElement>;
 
 export const Stamp = ({
@@ -14,7 +14,7 @@ export const Stamp = ({
     ...props
 }: TStampProps) => {
     const classes = cx(style.stamp, {
-        [style.oos]: type === "oot" || !type,
+        [style.oos]: type === "oos" || !type,
         [className]: !!className,
     });
 

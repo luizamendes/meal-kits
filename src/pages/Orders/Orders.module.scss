@@ -1,7 +1,7 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 200px 200px;
+    // grid-template-rows: 200px 200px;
 
     &__general {
         grid-template-areas:
@@ -64,8 +64,10 @@
 }
 
 .item {
-    // margin: 5px;
-	background: tomato;
-	// text-align: center;
-	// font-size: 1.5em;
+  content: '',
+}
+
+.button {
+  position: absolute;
+  right: 0.5rem;
 }
