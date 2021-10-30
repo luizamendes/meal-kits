@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getOrders, getItems, getProteins } from "../../api";
-import { IOrder } from "../../models/Order";
-import { IItem } from "../../models/Item";
-import { IProtein } from "../../models/Protein";
+import { Order } from "../../models/Order";
+import { Item } from "../../models/Item";
+import { Protein } from "../../models/Protein";
 import {
   Button,
   ItemDisplay,
@@ -15,14 +15,14 @@ import { itemHasMeat, getMeatCode } from "../../utils";
 import style from "./Orders.module.scss";
 
 export const Orders = () => {
-  const [orders, setOrders] = useState<IOrder[]>([]);
-  const [items, setItems] = useState<IItem[]>([]);
-  const [proteins, setProteins] = useState<IProtein[]>([]);
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
+  const [proteins, setProteins] = useState<Protein[]>([]);
 
   const [currentOrderIndex, setCurrentOrderIndex] = useState(0);
-  const [currentOrder, setCurrentOrder] = useState<IOrder>();
-  const [itemsOfOrder, setItemsOfOrder] = useState<IItem[]>([]);
-  const [proteinsOfOrder, setProteinsOfOrder] = useState<IProtein[]>([]);
+  const [currentOrder, setCurrentOrder] = useState<Order>();
+  const [itemsOfOrder, setItemsOfOrder] = useState<Item[]>([]);
+  const [proteinsOfOrder, setProteinsOfOrder] = useState<Protein[]>([]);
 
   // Fetch orders, items and meats from APIs
   useEffect(() => {

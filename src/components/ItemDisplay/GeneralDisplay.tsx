@@ -1,8 +1,8 @@
-import { IItem } from "../../models/Item";
+import { Item } from "../../models/Item";
 import { capitalizeFirstLetter } from "../../utils";
 
 type TGeneralDisplayProps = {
-  item: IItem;
+  item: Item;
 };
 
 export const GeneralDisplay = ({ item }: TGeneralDisplayProps) => {

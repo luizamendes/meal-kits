@@ -1,11 +1,11 @@
-import { IProtein } from "../../models/Protein";
+import { Protein } from "../../models/Protein";
 import { capitalizeFirstLetter } from "../../utils";
 
-type TProteinDisplayProps = {
-  protein: IProtein;
+type ProteinDisplayProps = {
+  protein: Protein;
 };
 
-export const ProteinDisplay = ({ protein }: TProteinDisplayProps) => {
+export const ProteinDisplay = ({ protein }: ProteinDisplayProps) => {
   const { name, code } = protein;
 
   return (

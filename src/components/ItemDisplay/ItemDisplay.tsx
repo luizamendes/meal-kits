@@ -3,7 +3,7 @@ import cx from "classnames";
 import { Stamp } from "../Stamp";
 import style from "./ItemDisplay.module.scss";
 
-export type TItemDisplayProps = {
+export type ItemDisplayProps = {
   children: JSX.Element;
   outOfStock?: boolean;
   station: string;
@@ -17,7 +17,7 @@ export const ItemDisplay = ({
   station,
   type,
   ...props
-}: TItemDisplayProps) => {
+}: ItemDisplayProps) => {
   const classes = cx(style.item, {
     [className]: !!className,
     [style.fade]: outOfStock,
