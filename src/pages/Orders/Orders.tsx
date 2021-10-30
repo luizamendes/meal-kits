@@ -81,7 +81,7 @@ export const Orders = () => {
     return (
       <section>
         <h3>Order # {id}</h3>
-        <div className={style.grid}>
+        <div className={`${style.grid} ${style.grid__general}`}>
           {itemsMap.map((item) => {
             const grid = item.id === 130 ? "grid-B4" : `grid-${item.station}`;
 
@@ -92,6 +92,23 @@ export const Orders = () => {
             );
           })}
         </div>
+        {proteinsOfOrder.length && (
+          <>
+            <h4>Proteins</h4>
+            <div className={`${style.grid} ${style.grid__meats}`}>
+              {proteinsOfOrder.map((protein) => (
+                <div
+                  className={`${style[`grid-${protein.station}`]} ${
+                    style.item
+                  }`}
+                  key={protein.code}
+                >
+                  {protein.name}
+                </div>
+              ))}
+            </div>
+          </>
+        )}
       </section>
     );
   };

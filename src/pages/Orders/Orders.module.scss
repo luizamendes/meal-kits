@@ -1,17 +1,24 @@
 .grid {
     display: grid;
-    grid-template-areas:
-      "A1 A2 A3 A4"
-      "B1 B2 B3 B4";
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 200px 200px;
+
+    &__general {
+        grid-template-areas:
+        "A1 A2 A3 A4"
+        "B1 B2 B3 B4";
+    }
+
+    &__meats {
+        grid-template-areas:
+        "C1 C2 C3 C4";
+    }
 
     &-A1 {
         grid-area: A1;
     }
 
     &-A2 {
-
         grid-area: A2;
     }
 
@@ -37,6 +44,22 @@
 
     &-B4 {
         grid-area: B4;
+    }
+
+    &-C1 {
+        grid-area: C1;
+    }
+
+    &-C2 {
+        grid-area: C2;
+    }
+
+    &-C3 {
+        grid-area: C3;
+    }
+
+    &-C4 {
+        grid-area: C4;
     }
 }
 
