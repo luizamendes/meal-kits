@@ -4,10 +4,18 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 1rem 1rem 2.25rem;
+  padding: 2rem 1rem 2.25rem;
   margin: 0.5rem;
 	font-size: 1.1rem;
   min-height: 12.5rem;
+  
+  @media (max-width: 969px){
+    font-size: 1rem;
+  }
+
+  @media (max-width: 675px){
+    padding-bottom: 10px;
+  }
   
   &--small {
     min-height: 8rem;
@@ -38,7 +46,6 @@
   background-color: #FFB5B5;
 }
 
-
 .station {
   position: absolute;
   top: 0.5rem;
@@ -52,4 +59,26 @@
   z-index: 10;
   bottom: 1rem;
   right: 0.5rem;
+
+  @media (max-width: 969px){
+    transform: rotate(-3deg) scale(0.9);
+  }
+
+  @media (max-width: 780px){
+    font-size: 0.85rem;
+    border: 0.2rem solid black;
+  }
+  
+  @media (max-width: 675px){
+    font-size: 0.8rem;
+    transform: unset;
+    // color: white;
+    // background-color: black;
+    border-radius: 10px;
+    position: static;
+    bottom: 10px;
+    padding: 0 10px;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
 }
