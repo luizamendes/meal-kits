@@ -76,16 +76,18 @@ export const Orders = () => {
 
     return (
       <section>
-        <h3>Order # {id}</h3>
+        <h3>Order #{id}</h3>
+        <h4>General</h4>
         <div className={`${style.grid} ${style.grid__general}`}>
           {itemsMap.map((item) => {
             if (item.id === 130) item.station = "B4";
 
             return (
               <ItemDisplay
-                className={`${style[`grid-${item.station}`]} ${style.item}`}
+                className={style[`grid-${item.station}`]}
                 key={item.id}
                 station={item.station}
+                type="general"
                 outOfStock={item.volume <= 0}
               >
                 <GeneralDisplay item={item} />
@@ -99,11 +101,10 @@ export const Orders = () => {
             <div className={`${style.grid} ${style.grid__meats}`}>
               {proteinsOfOrder.map((protein) => (
                 <ItemDisplay
-                  className={`${style[`grid-${protein.station}`]} ${
-                    style.item
-                  }`}
+                  className={style[`grid-${protein.station}`]}
                   key={protein.code}
                   station={protein.station}
+                  type="protein"
                 >
                   <ProteinDisplay protein={protein} />
                 </ItemDisplay>
@@ -124,12 +125,12 @@ export const Orders = () => {
   };
 
   return (
-    <section>
-      <h1>Orders</h1>
+    <main className={style.main}>
+      <h1>Scanned orders</h1>
       <RenderOrder />
       <Button onClick={nextOrder} className={style.button}>
         Next Order
       </Button>
-    </section>
+    </main>
   );
 };

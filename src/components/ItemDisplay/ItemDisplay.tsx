@@ -7,6 +7,7 @@ export type TItemDisplayProps = {
   children: JSX.Element;
   outOfStock?: boolean;
   station: string;
+  type: "general" | "protein";
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ItemDisplay = ({
@@ -14,11 +15,14 @@ export const ItemDisplay = ({
   children,
   outOfStock,
   station,
+  type,
   ...props
 }: TItemDisplayProps) => {
   const classes = cx(style.item, {
     [className]: !!className,
     [style.fade]: outOfStock,
+    [style.general]: type === "general",
+    [style.protein]: type === "protein",
   });
 
   return (

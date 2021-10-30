@@ -6,9 +6,8 @@
   justify-content: center;
   padding: 1rem 1rem 2.25rem;
   margin: 0.5rem;
-	font-size: 1.2rem;
-  min-height: 200px;
-  background-color: tomato;
+	font-size: 1.1rem;
+  min-height: 12.5rem;
 
   p {
     margin: 0.25rem 0;
@@ -23,9 +22,18 @@
   }
 }
 
-.fade {
-  background-color: #ff63478e;
+.general {
+  background-color: #C5C3FE;
+  
+  &.fade {
+    background-color: rgba(197, 195, 254, 0.5);
+  }
 }
+
+.protein {
+  background-color: #FFB5B5;
+}
+
 
 .station {
   position: absolute;
