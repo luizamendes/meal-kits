@@ -8,6 +8,7 @@ import {
   ItemDisplay,
   GeneralDisplay,
   ProteinDisplay,
+  Loading,
 } from "../../components";
 import { itemHasMeat, getMeatCode } from "../../utils";
 
@@ -15,69 +16,78 @@ import style from "./Orders.module.scss";
 
 export const Orders = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
+  const [items, setItems] = useState<IItem[]>([]);
+  const [proteins, setProteins] = useState<IProtein[]>([]);
+
   const [currentOrderIndex, setCurrentOrderIndex] = useState(0);
   const [currentOrder, setOrder] = useState<IOrder>();
   const [itemsMap, setItemsMap] = useState<IItem[]>([]);
   const [proteinsOfOrder, setProteinsOfOrder] = useState<IProtein[]>([]);
+  const [loading, setLoading] = useState(false);
 
-  // try catch?
+  // Fetch orders, items and meats from APIs
   useEffect(() => {
     const fetchOrders = async () => {
-      const { data } = await getOrders();
-      if (data) setOrders(data);
+      const { data: ordersList } = await getOrders();
+      if (ordersList) setOrders(ordersList);
+    };
+
+    const fetchItems = async () => {
+      const { data: itemsList } = await getItems();
+
+      if (itemsList) setItems(itemsList);
+    };
+
+    const fetchMeatInfo = async () => {
+      const { data: meatTypes } = await getProteins();
+
+      if (meatTypes) setProteins(meatTypes);
     };
 
     fetchOrders();
+    fetchItems();
+    fetchMeatInfo();
   }, []);
 
+  // Getting current order
   useEffect(() => {
     const current = orders[currentOrderIndex];
     if (current) setOrder(current);
   }, [orders, currentOrderIndex]);
 
+  // Getting items of the order
   useEffect(() => {
-    const fetchItems = async () => {
-      let { data: itemsList } = await getItems();
-
-      if (itemsList && itemsList.length > 0) {
-        itemsList = itemsList.filter((item) =>
-          currentOrder?.items.includes(item.id)
-        );
-      }
-
-      setItemsMap(itemsList);
-    };
-
-    if (currentOrder) {
-      fetchItems();
+    if (currentOrder && items?.length) {
+      const currentItems = items.filter((item) =>
+        currentOrder?.items.includes(item.id)
+      );
+      setItemsMap(currentItems);
     }
-  }, [currentOrder]);
+  }, [items, currentOrder]);
 
+  // Getting meats of the order
   useEffect(() => {
-    const fetchMeatInfo = async (meatsOfOrder: string[]) => {
-      let { data: meatTypes } = await getProteins();
-
-      meatTypes = meatTypes.filter((meat) => meatsOfOrder.includes(meat.code));
-      setProteinsOfOrder(meatTypes);
-    };
-
+    // Getting meat codes of current order
     const meatsOfOrder = itemsMap
       .filter((item) => itemHasMeat(item.displayName))
       .map((item) => getMeatCode(item.displayName));
 
-    if (meatsOfOrder.length) {
-      fetchMeatInfo(meatsOfOrder);
-    }
-  }, [itemsMap]);
+    // Getting information about the meats in the order
+    const meatTypesOfOrder = proteins.filter((protein) =>
+      meatsOfOrder.includes(protein.code)
+    );
+
+    setProteinsOfOrder(meatTypesOfOrder);
+  }, [proteins, itemsMap]);
 
   const RenderOrder = () => {
-    if (!currentOrder || !itemsMap.length) return <p>Loading</p>;
+    if (!currentOrder || !itemsMap.length) return <Loading />;
     const { id } = currentOrder;
 
     return (
-      <section>
-        <h3>Order #{id}</h3>
-        <h4>General</h4>
+      <section className={style.order}>
+        <h2>Order #{id}</h2>
+        <h3>General</h3>
         <div className={`${style.grid} ${style.grid__general}`}>
           {itemsMap.map((item) => {
             if (item.id === 130) item.station = "B4";
@@ -97,7 +107,7 @@ export const Orders = () => {
         </div>
         {proteinsOfOrder.length && (
           <>
-            <h4>Proteins</h4>
+            <h3>Proteins</h3>
             <div className={`${style.grid} ${style.grid__meats}`}>
               {proteinsOfOrder.map((protein) => (
                 <ItemDisplay
@@ -126,6 +136,7 @@ export const Orders = () => {
 
   return (
     <main className={style.main}>
+      {loading && <Loading />}
       <h1>Scanned orders</h1>
       <RenderOrder />
       <Button onClick={nextOrder} className={style.button}>

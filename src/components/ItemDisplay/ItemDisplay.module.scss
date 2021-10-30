@@ -8,6 +8,10 @@
   margin: 0.5rem;
 	font-size: 1.1rem;
   min-height: 12.5rem;
+  
+  &--small {
+    min-height: 8rem;
+  }
 
   p {
     margin: 0.25rem 0;

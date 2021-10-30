@@ -23,6 +23,7 @@ export const ItemDisplay = ({
     [style.fade]: outOfStock,
     [style.general]: type === "general",
     [style.protein]: type === "protein",
+    [style["item--small"]]: type === "protein",
   });
 
   return (
