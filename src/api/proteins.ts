@@ -3,6 +3,6 @@ import { httpClient } from "./client";
 
 const baseURL = process.env.REACT_APP_COOKIT_API;
 
-export const getItems = () => {
+export const getProteins = () => {
   return httpClient.get<IProtein[]>(`${baseURL}/proteins`);
 };

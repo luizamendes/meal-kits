@@ -1,0 +1,41 @@
+.grid {
+    display: grid;
+    grid-template-areas:
+      "A1 A2 A3 A4"
+      "B1 B2 B3 B4";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr auto;
+
+    &-A1 {
+        grid-area: A1;
+    }
+
+    &-A2 {
+
+        grid-area: A2;
+    }
+
+    &-A3 {
+        grid-area: A3;
+    }
+
+    &-A4 {
+        grid-area: A4;
+    }
+
+    &-B1 {
+        grid-area: B1;
+    }
+
+    &-B2 {
+        grid-area: B2;
+    }
+
+    &-B3 {
+        grid-area: B3;
+    }
+
+    &-B4 {
+        grid-area: B4;
+    }
+}
