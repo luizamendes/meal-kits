@@ -1,11 +1,11 @@
 import { Item } from "../../models/Item";
 import { capitalizeFirstLetter } from "../../utils/String";
 
-interface TGeneralDisplayProps {
+interface TGeneralItemDisplayProps {
   item: Item;
 }
 
-export const GeneralDisplay = ({ item }: TGeneralDisplayProps) => {
+export const GeneralItemDisplay = ({ item }: TGeneralItemDisplayProps) => {
   const { id, name, category, volume } = item;
 
   return (

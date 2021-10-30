@@ -1,3 +1,3 @@
 export * from "./ItemDisplay";
-export * from "./GeneralDisplay";
-export * from "./ProteinDisplay";
+export * from "./GeneralItemDisplay";
+export * from "./ProteinItemDisplay";

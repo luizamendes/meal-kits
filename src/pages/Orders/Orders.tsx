@@ -6,13 +6,15 @@ import { Protein } from "../../models/Protein";
 import {
   Button,
   ItemDisplay,
-  GeneralDisplay,
-  ProteinDisplay,
+  GeneralItemDisplay,
+  ProteinItemDisplay,
   Loading,
 } from "../../components";
 import { itemHasMeat, getMeatCode } from "../../utils/Meat";
+import { ProteinShelf } from "./components/ProteinShelf";
 
 import style from "./Orders.module.scss";
+import { GeneralShelf } from "./components/GeneralShelf";
 
 export const Orders = () => {
   const [orders, setOrders] = useState<Order[]>([]);
@@ -71,48 +73,13 @@ export const Orders = () => {
   }, [proteins, itemsOfOrder]);
 
   const RenderOrder = () => {
-    if (!currentOrder || !itemsOfOrder.length) return <Loading />;
-    const { id } = currentOrder;
-
     return (
-      <section className={style.order}>
-        <h2>Order #{id}</h2>
-        <h3>General</h3>
-        <div className={`${style.grid} ${style.grid__general}`}>
-          {itemsOfOrder.map((item) => {
-            if (item.id === 130) item.station = "B4";
-
-            return (
-              <ItemDisplay
-                className={style[`grid-${item.station}`]}
-                key={item.id}
-                station={item.station}
-                type="general"
-                outOfStock={item.volume <= 0}
-              >
-                <GeneralDisplay item={item} />
-              </ItemDisplay>
-            );
-          })}
-        </div>
-        {proteinsOfOrder.length && (
-          <>
-            <h3>Proteins</h3>
-            <div className={`${style.grid} ${style.grid__meats}`}>
-              {proteinsOfOrder.map((protein) => (
-                <ItemDisplay
-                  className={style[`grid-${protein.station}`]}
-                  key={protein.code}
-                  station={protein.station}
-                  type="protein"
-                >
-                  <ProteinDisplay protein={protein} />
-                </ItemDisplay>
-              ))}
-            </div>
-          </>
+      <>
+        <GeneralShelf items={itemsOfOrder} />
+        {proteinsOfOrder.length > 0 && (
+          <ProteinShelf proteins={proteinsOfOrder} />
         )}
-      </section>
+      </>
     );
   };
 
@@ -124,6 +91,8 @@ export const Orders = () => {
     }
   };
 
+  if (!currentOrder || !itemsOfOrder.length) return <Loading />;
+
   return (
     <main className={style.main}>
       <div className={style.header}>
@@ -132,7 +101,10 @@ export const Orders = () => {
           Next Order
         </Button>
       </div>
-      <RenderOrder />
+      <section className={style.order}>
+        <h2>Order #{currentOrder.id}</h2>
+        <RenderOrder />
+      </section>
     </main>
   );
 };

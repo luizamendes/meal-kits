@@ -32,9 +32,13 @@
     }
 
     &__meats {
-        grid-template-areas:
-        "C1 C2" 
-        "C3 C4";
+        grid-template-areas: "C1 C2 C3 C4";
+
+        @media (max-width: 600px){
+          grid-template-areas:
+          "C1 C2" 
+          "C3 C4";
+        }
     }
 
     &-A1 {

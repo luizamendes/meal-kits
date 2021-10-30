@@ -1,11 +1,11 @@
 import { Protein } from "../../models/Protein";
 import { capitalizeFirstLetter } from "../../utils/String";
 
-interface ProteinDisplayProps {
+interface ProteinItemDisplayProps {
   protein: Protein;
 }
 
-export const ProteinDisplay = ({ protein }: ProteinDisplayProps) => {
+export const ProteinItemDisplay = ({ protein }: ProteinItemDisplayProps) => {
   const { name, code } = protein;
 
   return (
