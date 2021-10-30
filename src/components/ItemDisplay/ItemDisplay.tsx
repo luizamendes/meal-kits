@@ -3,7 +3,7 @@ import cx from "classnames";
 import { Stamp } from "../Stamp";
 import style from "./ItemDisplay.module.scss";
 
-interface ItemDisplayProps extends HTMLAttributes<HTMLDivElement> {
+export interface ItemDisplayProps extends HTMLAttributes<HTMLDivElement> {
   children: JSX.Element;
   outOfStock?: boolean;
   station: string;
