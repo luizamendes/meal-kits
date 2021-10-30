@@ -3,3 +3,5 @@ export interface IProtein {
   code: string;
   station: string;
 }
+
+export const meatCodes = ["M", "C", "F", "S"];

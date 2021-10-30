@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
-import { getOrders, getItems } from "../../api";
+import { getOrders, getItems, getProteins } from "../../api";
 import { IOrder } from "../../models/Order";
 import { IItem } from "../../models/Item";
+import { IProtein } from "../../models/Protein";
 import { Button } from "../../components";
+import { itemHasMeat, getMeatCode } from "../../utils";
+
 import style from "./Orders.module.scss";
 
 export const Orders = () => {
   const [orders, setOrders] = useState<IOrder[]>([]);
   const [currentOrderIndex, setCurrentOrderIndex] = useState(0);
   const [currentOrder, setOrder] = useState<IOrder>();
-  const [itemsMap, setItemsMap] = useState<any>(); // how to remove this any
+  const [itemsMap, setItemsMap] = useState<IItem[]>([]);
+  const [proteinsOfOrder, setProteinsOfOrder] = useState<IProtein[]>([]);
 
   // try catch?
   useEffect(() => {
@@ -28,19 +32,24 @@ export const Orders = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const { data: itemsList } = await getItems();
-      const itemsMapTemp: Record<string, IItem> = {};
+      let { data: itemsList } = await getItems();
+      // const itemsTemp: IItem[] = [];
+
+      // if (itemsList && itemsList.length > 0) {
+      //   itemsList.forEach((item) => {
+      //     if (currentOrder?.items.includes(item.id)) {
+      //       itemsTemp.push(item);
+      //     }
+      //   });
+      // }
 
       if (itemsList && itemsList.length > 0) {
-        itemsList.forEach((item) => {
-          if (currentOrder?.items.includes(item.id)) {
-            if (item.id === 130) item.station = "B4"; // verify this, duplicated station
-            itemsMapTemp[item.station] = item;
-          }
-        });
+        itemsList = itemsList.filter((item) =>
+          currentOrder?.items.includes(item.id)
+        );
       }
 
-      setItemsMap(itemsMapTemp);
+      setItemsMap(itemsList);
     };
 
     if (currentOrder) {
@@ -48,16 +57,40 @@ export const Orders = () => {
     }
   }, [currentOrder]);
 
+  useEffect(() => {
+    const fetchMeatInfo = async (meatsOfOrder: string[]) => {
+      let { data: meatTypes } = await getProteins();
+
+      meatTypes = meatTypes.filter((meat) => meatsOfOrder.includes(meat.code));
+      setProteinsOfOrder(meatTypes);
+    };
+
+    const meatsOfOrder = itemsMap
+      .filter((item) => itemHasMeat(item.displayName))
+      .map((item) => getMeatCode(item.displayName));
+
+    if (meatsOfOrder.length) {
+      fetchMeatInfo(meatsOfOrder);
+    }
+  }, [itemsMap]);
+
   const RenderOrder = () => {
-    if (!currentOrder) return <p>Loading</p>;
+    if (!currentOrder || !itemsMap.length) return <p>Loading</p>;
     const { id } = currentOrder;
 
     return (
       <section>
         <h3>Order # {id}</h3>
         <div className={style.grid}>
-          <div className={style["grid-A1"]}>oi</div>
-          <div className={style["grid-A3"]}>xau</div>
+          {itemsMap.map((item) => {
+            const grid = item.id === 130 ? "grid-B4" : `grid-${item.station}`;
+
+            return (
+              <div className={`${style[grid]} ${style.item}`} key={item.id}>
+                {item.name}
+              </div>
+            );
+          })}
         </div>
       </section>
     );

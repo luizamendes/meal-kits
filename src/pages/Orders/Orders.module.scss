@@ -4,7 +4,7 @@
       "A1 A2 A3 A4"
       "B1 B2 B3 B4";
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr auto;
+    grid-template-rows: 200px 200px;
 
     &-A1 {
         grid-area: A1;
@@ -38,4 +38,11 @@
     &-B4 {
         grid-area: B4;
     }
+}
+
+.item {
+    margin: 5px;
+	background: tomato;
+	text-align: center;
+	font-size: 1.5em;
 }
