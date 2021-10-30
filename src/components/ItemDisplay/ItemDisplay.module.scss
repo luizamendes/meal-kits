@@ -14,9 +14,14 @@
   }
 
   @media (max-width: 675px){
-    padding-bottom: 10px;
+    padding-bottom: 0.625rem;
   }
-  
+
+  @media (max-width: 600px){
+    justify-content: flex-start;
+    padding-top: 2.25rem;
+  }
+
   &--small {
     min-height: 8rem;
   }
@@ -69,15 +74,14 @@
     border: 0.2rem solid black;
   }
   
-  @media (max-width: 675px){
+  @media (max-width: 675px) and (min-width: 601px){
     font-size: 0.8rem;
     transform: unset;
-    // color: white;
-    // background-color: black;
     border-radius: 10px;
+    border: 0.15rem solid black;
     position: static;
     bottom: 10px;
-    padding: 0 10px;
+    padding: 0 0.625rem;
     margin-top: 0.5rem;
     text-align: center;
   }

@@ -135,11 +135,13 @@ export const Orders = () => {
 
   return (
     <main className={style.main}>
-      <h1>Scanned orders</h1>
+      <div className={style.header}>
+        <h1>Scanned orders</h1>
+        <Button onClick={nextOrder} className={style.button}>
+          Next Order
+        </Button>
+      </div>
       <RenderOrder />
-      <Button onClick={nextOrder} className={style.button}>
-        Next Order
-      </Button>
     </main>
   );
 };

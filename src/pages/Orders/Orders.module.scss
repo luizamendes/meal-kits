@@ -12,16 +12,29 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    
+    @media (max-width: 600px){
+      grid-template-columns: repeat(2, 1fr);
+    }
 
     &__general {
         grid-template-areas:
         "A1 A2 A3 A4"
         "B1 B2 B3 B4";
+
+        @media (max-width: 600px){
+          grid-template-areas:
+          "A1 A2" 
+          "A3 A4"
+          "B1 B2"
+          "B3 B4";
+        }
     }
 
     &__meats {
         grid-template-areas:
-        "C1 C2 C3 C4";
+        "C1 C2" 
+        "C3 C4";
     }
 
     &-A1 {
@@ -81,6 +94,17 @@
   @media (max-width: 780px){
     font-size: 1rem;
     padding: 0.25rem 1.5rem;
+  }
+
+  @media (max-width: 450px){
+    position: static;
+    margin: 0 auto;
+  }
+}
+
+.header {
+  @media (max-width: 450px){
+    text-align: center;
   }
 }
 
