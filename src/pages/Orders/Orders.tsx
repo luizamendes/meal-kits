@@ -10,7 +10,7 @@ import {
   ProteinDisplay,
   Loading,
 } from "../../components";
-import { itemHasMeat, getMeatCode } from "../../utils";
+import { itemHasMeat, getMeatCode } from "../../utils/Meat";
 
 import style from "./Orders.module.scss";
 

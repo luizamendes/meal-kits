@@ -1,5 +1,5 @@
 import { Protein } from "../../models/Protein";
-import { capitalizeFirstLetter } from "../../utils";
+import { capitalizeFirstLetter } from "../../utils/String";
 
 type ProteinDisplayProps = {
   protein: Protein;

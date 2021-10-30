@@ -1,5 +1,5 @@
 import { Item } from "../../models/Item";
-import { capitalizeFirstLetter } from "../../utils";
+import { capitalizeFirstLetter } from "../../utils/String";
 
 type TGeneralDisplayProps = {
   item: Item;

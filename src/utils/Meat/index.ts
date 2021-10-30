@@ -1,4 +1,4 @@
-import { meatCodes } from "../models/Protein";
+import { meatCodes } from "../../models/Protein";
 
 export const itemHasMeat = (displayName: string) => {
   const [, meatCode] = displayName.split("-");
@@ -12,10 +12,4 @@ export const getMeatCode = (displayName: string) => {
   if (!meatCodes.includes(meatCode.toUpperCase())) return "";
 
   return meatCode.toUpperCase();
-};
-
-export const capitalizeFirstLetter = (str: string) => {
-  const word = str.toLowerCase();
-
-  return word.toUpperCase().charAt(0) + word.slice(1);
 };
