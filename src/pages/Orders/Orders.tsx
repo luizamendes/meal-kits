@@ -4,7 +4,7 @@ import { IOrder } from "../../models/Order";
 import { IItem } from "../../models/Item";
 import { IProtein } from "../../models/Protein";
 import { Button, ItemDisplay } from "../../components";
-import { itemHasMeat, getMeatCode } from "../../utils";
+import { itemHasMeat, getMeatCode, capitalizeFirstLetter } from "../../utils";
 
 import style from "./Orders.module.scss";
 
@@ -78,10 +78,30 @@ export const Orders = () => {
 
             return (
               <ItemDisplay
-                item={item}
+                // item={item}
                 className={`${style[`grid-${item.station}`]} ${style.item}`}
                 key={item.id}
-              />
+                station={item.station}
+                outOfStock={item.volume <= 0}
+              >
+                <>
+                  <p>
+                    <span>Id:</span> {item.id}
+                  </p>
+                  <p>
+                    <span>Name:</span>
+                    {capitalizeFirstLetter(item.name)}
+                  </p>
+                  <p>
+                    <span>Category:</span>
+                    {capitalizeFirstLetter(item.category)}
+                  </p>
+                  <p>
+                    <span>Quantity:</span>
+                    {item.volume}
+                  </p>
+                </>
+              </ItemDisplay>
             );
           })}
         </div>
@@ -90,14 +110,24 @@ export const Orders = () => {
             <h4>Proteins</h4>
             <div className={`${style.grid} ${style.grid__meats}`}>
               {proteinsOfOrder.map((protein) => (
-                <div
+                <ItemDisplay
                   className={`${style[`grid-${protein.station}`]} ${
                     style.item
                   }`}
                   key={protein.code}
+                  station={protein.station}
                 >
-                  {protein.name}
-                </div>
+                  <>
+                    <p>
+                      <span>Protein name:</span>
+                      {capitalizeFirstLetter(protein.name)}
+                    </p>
+                    <p>
+                      <span>Protein code:</span>
+                      {protein.code}
+                    </p>
+                  </>
+                </ItemDisplay>
               ))}
             </div>
           </>

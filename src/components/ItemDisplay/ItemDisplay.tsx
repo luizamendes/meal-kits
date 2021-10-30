@@ -4,22 +4,30 @@ import { IItem } from "../../models/Item";
 import { Stamp } from "../Stamp";
 import { capitalizeFirstLetter } from "../../utils";
 import style from "./ItemDisplay.module.scss";
+import { IProtein } from "../../models/Protein";
 
 export type TItemDisplayProps = {
-  item: IItem;
+  // item: IItem;
+  // protein?: IProtein;
+  children: JSX.Element;
+  outOfStock?: boolean;
+  station: string;
 } & HTMLAttributes<HTMLDivElement>;
 
 export const ItemDisplay = ({
-  item,
+  // item,
   className = "",
+  children,
+  outOfStock,
+  station,
   ...props
 }: TItemDisplayProps) => {
-  const { id, name, station, volume, category } = item;
-  const [outOfStock, setOutOfStock] = useState(false);
+  // const { id, name, station, volume, category } = item;
+  // const [outOfStock, setOutOfStock] = useState(false);
 
-  useEffect(() => {
-    if (item.volume <= 0) setOutOfStock(true);
-  }, [item]);
+  // useEffect(() => {
+  //   if (item.volume <= 0) setOutOfStock(true);
+  // }, [item]);
 
   const classes = cx(style.item, {
     [className]: !!className,
@@ -29,7 +37,7 @@ export const ItemDisplay = ({
   return (
     <div className={classes} {...props}>
       <div className={style.station}>{station}</div>
-      <p>
+      {/* <p>
         <span>Id:</span> {id}
       </p>
       <p>
@@ -43,7 +51,8 @@ export const ItemDisplay = ({
       <p>
         <span>Quantity:</span>
         {volume}
-      </p>
+      </p> */}
+      {children}
       {outOfStock && <Stamp className={style.stamp} text="Out of stock" />}
     </div>
   );
