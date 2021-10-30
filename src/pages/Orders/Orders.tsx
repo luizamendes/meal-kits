@@ -3,7 +3,7 @@ import { getOrders, getItems, getProteins } from "../../api";
 import { Order } from "../../models/Order";
 import { Item } from "../../models/Item";
 import { Protein } from "../../models/Protein";
-import { Button, Loading } from "../../components";
+import { Button, Loading, Notification } from "../../components";
 import { itemHasMeat, getMeatCode } from "../../utils/Meat";
 import { ProteinShelf } from "./components/ProteinShelf";
 import { logger } from "../../services/sentry";
@@ -21,25 +21,30 @@ export const Orders = () => {
   const [itemsOfOrder, setItemsOfOrder] = useState<Item[]>([]);
   const [proteinsOfOrder, setProteinsOfOrder] = useState<Protein[]>([]);
 
+  const [error, setError] = useState<{ title: string; message: string }>();
+
   // Fetch orders, items and meats from APIs
   useEffect(() => {
     getOrders()
       .then(({ data }) => setOrders(data))
-      .catch((error) =>
-        logger(`Logger :: Error fetching orders :: ${error.message}`)
-      );
+      .catch((err) => {
+        setError({ title: "Error", message: "Error fetching orders" });
+        logger(`Logger :: Error fetching orders :: ${err.message}`);
+      });
 
     getItems()
       .then(({ data }) => setItems(data))
-      .catch((error) =>
-        logger(`Logger :: Error fetching items :: ${error.message}`)
-      );
+      .catch((err) => {
+        setError({ title: "Error", message: "Error fetching items" });
+        logger(`Logger :: Error fetching items :: ${err.message}`);
+      });
 
     getProteins()
       .then(({ data }) => setProteins(data))
-      .catch((error) =>
-        logger(`Logger :: Error fetching proteins :: ${error.message}`)
-      );
+      .catch((err) => {
+        setError({ title: "Error", message: "Error fetching proteins" });
+        logger(`Logger :: Error fetching proteins :: ${err.message}`);
+      });
   }, []);
 
   // Getting current order
@@ -103,6 +108,7 @@ export const Orders = () => {
         </Button>
       </div>
       <section className={style.order}>
+        {error && <Notification title={error.title} message={error.message} />}
         <h2>Order #{currentOrder.id}</h2>
         <RenderOrder />
       </section>
