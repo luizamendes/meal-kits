@@ -22,6 +22,7 @@ To run in development mode.
 ### `yarn test:watch`
 
 To run tests in watch mode.
+
 ### `yarn test:e2e:run`
 
 To run end to end test
@@ -29,6 +30,8 @@ To run end to end test
 ### `yarn test:coverage`
 
 To get test coverage.
+
+![https://github.com/luizamendes/meal-kits/blob/main/src/assets/Coverage.png]
 
 ### `yarn build`
 
