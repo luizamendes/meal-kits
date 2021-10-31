@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { getOrders, getItems, getProteins } from "../../api";
 import { Order } from "../../models/Order";
 import { Item } from "../../models/Item";
@@ -7,11 +8,12 @@ import { Button, Loading, Notification } from "../../components";
 import { itemHasMeat, getMeatCode } from "../../utils/Meat";
 import { ProteinShelf } from "./components/ProteinShelf";
 import { logger } from "../../services/sentry";
-
-import style from "./Orders.module.scss";
 import { GeneralShelf } from "./components/GeneralShelf";
 
+import style from "./Orders.module.scss";
+
 export const Orders = () => {
+  const history = useHistory();
   const [orders, setOrders] = useState<Order[]>([]);
   const [items, setItems] = useState<Item[]>([]);
   const [proteins, setProteins] = useState<Protein[]>([]);
@@ -22,6 +24,7 @@ export const Orders = () => {
   const [proteinsOfOrder, setProteinsOfOrder] = useState<Protein[]>([]);
 
   const [error, setError] = useState<{ title: string; message: string }>();
+  const [finished, setFinished] = useState(false);
 
   // Fetch orders, items and meats from APIs
   useEffect(() => {
@@ -78,6 +81,10 @@ export const Orders = () => {
     setProteinsOfOrder(meatTypesOfOrder);
   }, [proteins, itemsOfOrder]);
 
+  useEffect(() => {
+    if (currentOrderIndex === 8) setFinished(true);
+  }, [currentOrderIndex]);
+
   const RenderOrder = () => {
     return (
       <>
@@ -90,11 +97,15 @@ export const Orders = () => {
   };
 
   const nextOrder = () => {
-    if (currentOrderIndex < orders.length - 1) {
+    if (currentOrderIndex < orders.length) {
       setCurrentOrderIndex(currentOrderIndex + 1);
-    } else {
-      setCurrentOrderIndex(0);
     }
+
+    if (currentOrderIndex === orders.length) {
+      setFinished(true);
+    }
+
+    if (finished) history.push("/");
   };
 
   if (!currentOrder || !itemsOfOrder.length) return <Loading />;
@@ -104,14 +115,23 @@ export const Orders = () => {
       <div className={style.header}>
         <h1>Scanned orders</h1>
         <Button onClick={nextOrder} className={style.button}>
-          Next Order
+          {finished ? "Finish" : "Next order"}
         </Button>
       </div>
       <section className={style.order}>
         {error && <Notification title={error.title} message={error.message} />}
-        <h2>Order #{currentOrder.id}</h2>
-        <RenderOrder />
+        {!finished && (
+          <>
+            <h2>Order #{currentOrder.id}</h2>
+            <RenderOrder />
+          </>
+        )}
       </section>
+      {finished && (
+        <p className={style.finished}>
+          You have finished all the orders. Click on the finish button.
+        </p>
+      )}
     </main>
   );
 };
