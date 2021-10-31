@@ -113,15 +113,27 @@
       "C3 C4";
   }
 
-  .grid-A1, .grid-A2, .grid-A3, .grid-A4, .grid-B1, .grid-B2, .grid-B3, .grid-B4, .grid-C1, .grid-C2, .grid-C3, .grid-C4 {
+  .grid-A1,
+  .grid-A2,
+  .grid-A3,
+  .grid-A4,
+  .grid-B1,
+  .grid-B2,
+  .grid-B3,
+  .grid-B4,
+  .grid-C1,
+  .grid-C2,
+  .grid-C3,
+  .grid-C4 {
     grid-area: unset;
   }
-  
+
   .main {
     padding: 0;
   }
 
-  .order h2, .order h3 {
+  .order h2,
+  .order h3 {
     text-align: center;
   }
 }
@@ -139,6 +151,6 @@
 
 @media (max-width: 320px) {
   .order {
-    padding: 0
+    padding: 0;
   }
 }

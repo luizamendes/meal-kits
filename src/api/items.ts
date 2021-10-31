@@ -1,8 +1,8 @@
+import axios from "axios";
 import { Item } from "../models/Item";
-import { httpClient } from "./client";
 
 const baseURL = process.env.REACT_APP_COOKIT_API;
 
 export const getItems = () => {
-  return httpClient.get<Item[]>(`${baseURL}/items`);
+  return axios.get<Item[]>(`${baseURL}/items`);
 };

@@ -1,4 +1,4 @@
-import { itemHasMeat, getMeatCode } from "./index";
+import { itemHasMeat, getMeatCode } from "../Meat/index";
 
 describe("Testing Meat utils", () => {
   it("should return correctly if item has meat", () => {

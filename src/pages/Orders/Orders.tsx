@@ -9,6 +9,7 @@ import { itemHasMeat, getMeatCode } from "../../utils/Meat";
 import { ProteinShelf } from "./components/ProteinShelf";
 import { logger } from "../../services/sentry";
 import { GeneralShelf } from "./components/GeneralShelf";
+import { formatDate } from "../../utils/String";
 
 import style from "./Orders.module.css";
 
@@ -81,10 +82,6 @@ export const Orders = () => {
     setProteinsOfOrder(meatTypesOfOrder);
   }, [proteins, itemsOfOrder]);
 
-  useEffect(() => {
-    if (currentOrderIndex === 8) setFinished(true);
-  }, [currentOrderIndex]);
-
   const RenderOrder = () => {
     return (
       <>
@@ -101,7 +98,7 @@ export const Orders = () => {
       setCurrentOrderIndex(currentOrderIndex + 1);
     }
 
-    if (currentOrderIndex === orders.length) {
+    if (currentOrderIndex === orders.length - 1) {
       setFinished(true);
     }
 
@@ -113,7 +110,7 @@ export const Orders = () => {
   return (
     <main className={style.main}>
       <div className={style.header}>
-        <h1>Scanned orders</h1>
+        <h1>{orders.length} orders scanned</h1>
         <Button onClick={nextOrder} className={style.button}>
           {finished ? "Finish" : "Next order"}
         </Button>
@@ -123,6 +120,7 @@ export const Orders = () => {
         {!finished && (
           <>
             <h2>Order #{currentOrder.id}</h2>
+            <p>Package date: {formatDate(currentOrder["package-date"])}</p>
             <RenderOrder />
           </>
         )}
