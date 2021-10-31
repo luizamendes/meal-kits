@@ -31,7 +31,7 @@ To run end to end test
 
 To get test coverage.
 
-![https://github.com/luizamendes/meal-kits/blob/main/src/assets/Coverage.png]
+![Coverage image](https://github.com/luizamendes/meal-kits/blob/main/src/assets/Coverage.png)
 
 ### `yarn build`
 
