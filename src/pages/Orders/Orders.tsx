@@ -10,7 +10,7 @@ import { ProteinShelf } from "./components/ProteinShelf";
 import { logger } from "../../services/sentry";
 import { GeneralShelf } from "./components/GeneralShelf";
 
-import style from "./Orders.module.scss";
+import style from "./Orders.module.css";
 
 export const Orders = () => {
   const history = useHistory();

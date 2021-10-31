@@ -1,6 +1,6 @@
 import { ItemDisplay, ProteinItemDisplay } from "../../../components";
 import { Protein } from "../../../models/Protein";
-import style from "../Orders.module.scss";
+import style from "../Orders.module.css";
 
 interface ProteinShelfProps {
   proteins: Protein[];

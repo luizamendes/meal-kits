@@ -1,6 +1,6 @@
 import { useHistory } from "react-router-dom";
 import { Button } from "../../components";
-import style from "./Home.module.scss";
+import style from "./Home.module.css";
 
 export const Home = () => {
   const history = useHistory();

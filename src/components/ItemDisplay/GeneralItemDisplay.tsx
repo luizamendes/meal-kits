@@ -1,6 +1,6 @@
 import { Item } from "../../models/Item";
 import { capitalizeFirstLetter } from "../../utils/String";
-import style from "./ItemDisplay.module.scss";
+import style from "./ItemDisplay.module.css";
 
 interface TGeneralItemDisplayProps {
   item: Item;

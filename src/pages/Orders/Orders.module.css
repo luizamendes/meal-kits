@@ -1,0 +1,123 @@
+.main {
+  position: relative;
+  padding: 0.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.order {
+  padding: 0 0.5rem;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-A1 {
+  grid-area: A1;
+}
+
+.grid-A2 {
+  grid-area: A2;
+}
+
+.grid-A3 {
+  grid-area: A3;
+}
+
+.grid-A4 {
+  grid-area: A4;
+}
+
+.grid-B1 {
+  grid-area: B1;
+}
+
+.grid-B2 {
+  grid-area: B2;
+}
+
+.grid-B3 {
+  grid-area: B3;
+}
+
+.grid-B4 {
+  grid-area: B4;
+}
+
+.grid-C1 {
+  grid-area: C1;
+}
+
+.grid-C2 {
+  grid-area: C2;
+}
+
+.grid-C3 {
+  grid-area: C3;
+}
+
+.grid-C4 {
+  grid-area: C4;
+}
+
+.grid__general {
+  grid-template-areas:
+  "A1 A2 A3 A4"
+  "B1 B2 B3 B4";
+}
+
+.grid__meats {
+  grid-template-areas: "C1 C2 C3 C4";
+}
+
+.button {
+  position: absolute;
+  right: 0.5rem;
+  top: 1rem;
+}
+
+.finished {
+  text-align: center;
+  margin-top: 6rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+@media (max-width: 780px){
+  .button {
+    font-size: 1rem;
+    padding: 0.25rem 1.5rem;
+  }
+}
+
+@media (max-width: 600px){
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid__general {
+    grid-template-areas:
+    "A1 A2" 
+    "A3 A4"
+    "B1 B2"
+    "B3 B4";
+  }
+  .grid__meat {
+    grid-template-areas:
+    "C1 C2" 
+    "C3 C4"
+  }
+}
+
+@media (max-width: 450px){
+  .button {
+    position: static;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+  }
+}

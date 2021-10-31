@@ -13,9 +13,9 @@
   cursor: pointer;
   padding: 0.5rem 2rem;
   line-height: 20px;
-  height: 64px;
-  
-  &:hover {
-    background-color: darken(#fe9f81, 8);
-  }
+  height: 64px; 
+}
+
+main:hover {
+  background-color: darken(#fe9f81, 8);
 }

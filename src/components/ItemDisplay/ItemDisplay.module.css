@@ -8,61 +8,35 @@
   margin: 0.5rem;
 	font-size: 1.1rem;
   min-height: 12.5rem;
-  
-  @media (max-width: 969px){
-    font-size: 1rem;
-  }
+}
 
-  @media (max-width: 675px){
-    padding-bottom: 0.625rem;
-    padding-top: 2.35rem;
-  }
+.item--small {
+  min-height: 8rem;
+}
 
-  @media (max-width: 600px){
-    justify-content: flex-start;
-    padding-top: 2.4rem;
-  }
+.item__title {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
 
-  &--small {
-    min-height: 8rem;
-  }
-
-  &__title {
-    font-weight: bold;
-    font-size: 1.25rem;
-    
-    @media (max-width: 790px){
-      font-size: 1.1rem;
-    }
-
-    // @media (max-width: 730px){
-    //   font-size: 1rem;
-    // }
-  
-    // @media (max-width: 675px){
-  
-    // }
-  }
-
-  p {
+.item p {
     margin: 0.25rem 0;
+}
 
-    span {
-      font-weight: bold;
+.item p span {
+    font-weight: bold;
+}
 
-      &::after {
-        content: ' ';
-      }
-    }
-  }
+.item p span ::after {
+  content: ' ';
 }
 
 .general {
   background-color: #C5C3FE;
-  
-  &.fade {
-    background-color: rgba(197, 195, 254, 0.5);
-  }
+}
+
+.general.fade {
+  background-color: rgba(197, 195, 254, 0.5);
 }
 
 .protein {
@@ -83,17 +57,40 @@
   z-index: 10;
   bottom: 1rem;
   right: 0.5rem;
+}
 
-  @media (max-width: 969px){
-    transform: rotate(-3deg) scale(0.9);
+@media (max-width: 969px){
+  .item {
+    font-size: 1rem;
   }
 
-  @media (max-width: 780px){
+  .stamp {
+    transform: rotate(-3deg) scale(0.9);
+  }
+}
+
+@media (max-width: 790px){
+  .title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 780px){
+  .stamp {
     font-size: 0.85rem;
     border: 0.2rem solid black;
   }
+}
+
+@media (max-width: 675px){
+  .item {
+    padding-bottom: 0.625rem;
+    padding-top: 2.35rem;
+  }
+}
   
-  @media (max-width: 675px) and (min-width: 601px){
+@media (max-width: 675px) and (min-width: 601px){
+  .stamp {
     font-size: 0.8rem;
     transform: unset;
     border-radius: 10px;
@@ -105,3 +102,10 @@
     text-align: center;
   }
 }
+
+@media (max-width: 600px){
+  .item {
+    justify-content: flex-start;
+    padding-top: 2.4rem;
+  }
+} 

@@ -1,4 +1,4 @@
-import style from "./Notification.module.scss";
+import style from "./Notification.module.css";
 
 interface NotificationProps {
   title: string;

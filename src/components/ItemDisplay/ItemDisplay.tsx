@@ -1,7 +1,7 @@
 import { HTMLAttributes } from "react";
 import cx from "classnames";
 import { Stamp } from "../Stamp";
-import style from "./ItemDisplay.module.scss";
+import style from "./ItemDisplay.module.css";
 
 export interface ItemDisplayProps extends HTMLAttributes<HTMLDivElement> {
   children: JSX.Element;

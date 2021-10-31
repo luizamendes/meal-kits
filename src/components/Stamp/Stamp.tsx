@@ -1,6 +1,6 @@
 import { HTMLAttributes } from "react";
 import cx from "classnames";
-import style from "./Stamp.module.scss";
+import style from "./Stamp.module.css";
 
 export interface StampProps extends HTMLAttributes<HTMLSpanElement> {
   text: string;

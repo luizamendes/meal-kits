@@ -1,6 +1,6 @@
 import { GeneralItemDisplay, ItemDisplay } from "../../../components";
 import { Item } from "../../../models/Item";
-import style from "../Orders.module.scss";
+import style from "../Orders.module.css";
 
 interface GeneralShelfProps {
   items: Item[];

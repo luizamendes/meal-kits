@@ -4,7 +4,7 @@ import * as Sentry from "@sentry/react";
 import { Integrations } from "@sentry/tracing";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./index.scss";
+import "./index.css";
 
 const sentry = process.env.REACT_APP_SENTRY_URL;
 
