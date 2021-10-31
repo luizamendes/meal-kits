@@ -5,11 +5,9 @@ interface NotificationProps {
   message: string;
 }
 
-export const Notification = ({ title, message }: NotificationProps) => {
-  return (
-    <div className={style.notification}>
-      <p className={style.title}>{title}</p>
-      <p className={style.message}>{message}</p>
-    </div>
-  );
-};
+export const Notification = ({ title, message }: NotificationProps) => (
+  <div className={style.notification}>
+    <p className={style.title}>{title}</p>
+    <p className={style.message}>{message}</p>
+  </div>
+);

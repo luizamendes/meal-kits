@@ -30,7 +30,8 @@
     "test:coverage": "react-scripts test --coverage",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test:e2e:run": "start-server-and-test start http://localhost:3000 cy:run"
   },
   "lint-staged": {
     "*.{ts,tsx}": "yarn prettier"
@@ -71,6 +72,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "husky": "^7.0.0",
     "lint-staged": "^11.2.6",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "start-server-and-test": "^1.14.0"
   }
 }

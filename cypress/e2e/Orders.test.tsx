@@ -1,11 +1,11 @@
 /// <reference types="cypress" />
 // @ts-check
-describe("HomePage spec", () => {
+describe("Orders spec", () => {
   beforeEach(() => {
     cy.viewport("macbook-13");
   });
 
-  it("should find results related with the search", () => {
+  it("should go through all orders and reach the end", () => {
     cy.visit("/");
     cy.contains("Scan orders").click();
     cy.url().should("includes", "/orders");
