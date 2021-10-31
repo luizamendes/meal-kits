@@ -12,6 +12,7 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-gap: 0.5rem;
 }
 
 .grid-A1 {
@@ -95,6 +96,7 @@
 @media (max-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.3rem;
   }
 
   .grid__general {
@@ -104,14 +106,27 @@
       "B1 B2"
       "B3 B4";
   }
-  .grid__meat {
+
+  .grid__meats {
     grid-template-areas:
       "C1 C2"
       "C3 C4";
   }
+
+  .grid-A1, .grid-A2, .grid-A3, .grid-A4, .grid-B1, .grid-B2, .grid-B3, .grid-B4, .grid-C1, .grid-C2, .grid-C3, .grid-C4 {
+    grid-area: unset;
+  }
+  
+  .main {
+    padding: 0;
+  }
+
+  .order h2, .order h3 {
+    text-align: center;
+  }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 540px) {
   .button {
     position: static;
     margin: 0 auto;
@@ -119,5 +134,11 @@
 
   .header {
     text-align: center;
+  }
+}
+
+@media (max-width: 320px) {
+  .order {
+    padding: 0
   }
 }

@@ -28,15 +28,15 @@ it("Renders Orders correctly", async () => {
   });
 
   expect(screen.getByTestId("loading")).toBeInTheDocument();
-  await waitFor(() => {
-    expect(screen.getByText("Scanned orders")).toBeInTheDocument();
-    expect(screen.getByText("Order #1")).toBeInTheDocument();
-  });
+
+  const scanned = await screen.findByText("Scanned orders");
+  const order1 = await screen.findByText("Order #1");
+  expect(scanned).toBeInTheDocument();
+  expect(order1).toBeInTheDocument();
 
   const nextButton = screen.getByText(/Next order/i);
   nextButton.click();
 
-  await waitFor(() => {
-    expect(screen.getByText("Order #2")).toBeInTheDocument();
-  });
+  const order2 = await screen.findByText("Order #2");
+  expect(order2).toBeInTheDocument();
 });

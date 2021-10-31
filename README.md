@@ -30,7 +30,7 @@ To build the project to production.
 ## Tecnologies/Libs used:
 
 - **Axios** to perform the HTTP requests
-- **Jest** and **React Testing Library** for the tests
+- **Jest**, **React Testing Library** and **Cypress** for the tests
 - **Sentry** for logging erros
 - **ESLint** and **Prettier** to find and fix problems with code and enforce code style
 - **Husky** and **Lint-staged** to assure code is within pattern before commiting and tests are passing
