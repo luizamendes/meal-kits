@@ -37,8 +37,12 @@ To get test coverage.
 
 To build the project to production.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/67c3a4ca-a840-47aa-a30d-768975b3029b/deploy-status)](https://app.netlify.com/sites/meal-kits/deploys)
+
 ## Tecnologies/Libs used:
 
+- **React**, **React Hooks**, **Typescript**
+- **CSS Modules**
 - **Axios** to perform the HTTP requests
 - **Jest**, **React Testing Library** and **Cypress** for the tests
 - **Sentry** for logging erros
