@@ -120,7 +120,9 @@ export const Orders = () => {
         {!finished && (
           <>
             <h2>Order #{currentOrder.id}</h2>
-            <p>Package date: {formatDate(currentOrder["package-date"])}</p>
+            <p className={style.date}>
+              Package date: {formatDate(currentOrder["package-date"])}
+            </p>
             <RenderOrder />
           </>
         )}

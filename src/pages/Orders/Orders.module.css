@@ -147,6 +147,10 @@
   .header {
     text-align: center;
   }
+
+  .date {
+    text-align: center;
+  }
 }
 
 @media (max-width: 320px) {
