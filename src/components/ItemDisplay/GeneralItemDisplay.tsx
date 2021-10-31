@@ -1,5 +1,6 @@
 import { Item } from "../../models/Item";
 import { capitalizeFirstLetter } from "../../utils/String";
+import style from "./ItemDisplay.module.scss";
 
 interface TGeneralItemDisplayProps {
   item: Item;
@@ -10,12 +11,9 @@ export const GeneralItemDisplay = ({ item }: TGeneralItemDisplayProps) => {
 
   return (
     <>
+      <p className={style.item__title}>{capitalizeFirstLetter(name)}</p>
       <p>
         <span>Id:</span> {id}
-      </p>
-      <p>
-        <span>Name:</span>
-        {capitalizeFirstLetter(name)}
       </p>
       <p>
         <span>Category:</span>

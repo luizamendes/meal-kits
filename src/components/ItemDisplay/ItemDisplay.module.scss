@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 2rem 1rem 2.25rem;
+  padding: 2.2rem 1rem 2.25rem;
   margin: 0.5rem;
 	font-size: 1.1rem;
   min-height: 12.5rem;
@@ -15,15 +15,33 @@
 
   @media (max-width: 675px){
     padding-bottom: 0.625rem;
+    padding-top: 2.35rem;
   }
 
   @media (max-width: 600px){
     justify-content: flex-start;
-    padding-top: 2.25rem;
+    padding-top: 2.4rem;
   }
 
   &--small {
     min-height: 8rem;
+  }
+
+  &__title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    
+    @media (max-width: 790px){
+      font-size: 1.1rem;
+    }
+
+    // @media (max-width: 730px){
+    //   font-size: 1rem;
+    // }
+  
+    // @media (max-width: 675px){
+  
+    // }
   }
 
   p {
@@ -56,6 +74,7 @@
   top: 0.5rem;
   left: 0.5rem;
   font-weight: bold;
+  font-size: 1.5rem;
   text-decoration: underline;
 }
 
