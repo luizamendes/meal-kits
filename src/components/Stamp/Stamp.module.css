@@ -8,12 +8,12 @@
   padding: 0.25rem 1rem;
   text-transform: uppercase;
   border-radius: 1rem;
-  font-family: 'Courier';
+  font-family: "Courier";
 }
 
 .oos {
   color: black;
   border: 0.5rem double black;
   transform: rotate(-3deg);
-  font-size: 1rem;  
+  font-size: 1rem;
 }

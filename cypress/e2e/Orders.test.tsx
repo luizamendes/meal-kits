@@ -12,7 +12,7 @@ describe("HomePage spec", () => {
 
     cy.contains("Order #1").should("be.visible");
 
-    for (let i = 0; i < 7; i++) { // eslint-disable-line
+    for (let i = 0; i < 7; i++) {
       cy.contains("Next order").click();
     }
 

@@ -23,10 +23,15 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx|md|scss|css)\" --write",
     "test": "react-scripts test",
     "test:coverage": "react-scripts test --coverage",
     "cy:open": "cypress open",
-    "cy:run": "cypress run"
+    "cy:run": "cypress run",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "yarn prettier"
   },
   "eslintConfig": {
     "extends": [
@@ -62,6 +67,8 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.26.1",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.2.6",
     "prettier": "^2.4.1"
   }
 }

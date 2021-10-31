@@ -10,8 +10,8 @@
 }
 
 .grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .grid-A1 {
@@ -64,8 +64,8 @@
 
 .grid__general {
   grid-template-areas:
-  "A1 A2 A3 A4"
-  "B1 B2 B3 B4";
+    "A1 A2 A3 A4"
+    "B1 B2 B3 B4";
 }
 
 .grid__meats {
@@ -85,33 +85,33 @@
   font-weight: bold;
 }
 
-@media (max-width: 780px){
+@media (max-width: 780px) {
   .button {
     font-size: 1rem;
     padding: 0.25rem 1.5rem;
   }
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .grid__general {
     grid-template-areas:
-    "A1 A2" 
-    "A3 A4"
-    "B1 B2"
-    "B3 B4";
+      "A1 A2"
+      "A3 A4"
+      "B1 B2"
+      "B3 B4";
   }
   .grid__meat {
     grid-template-areas:
-    "C1 C2" 
-    "C3 C4"
+      "C1 C2"
+      "C3 C4";
   }
 }
 
-@media (max-width: 450px){
+@media (max-width: 450px) {
   .button {
     position: static;
     margin: 0 auto;

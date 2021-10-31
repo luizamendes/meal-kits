@@ -6,7 +6,7 @@
   justify-content: center;
   padding: 2.2rem 1rem 2.25rem;
   margin: 0.5rem;
-	font-size: 1.1rem;
+  font-size: 1.1rem;
   min-height: 12.5rem;
 }
 
@@ -20,19 +20,19 @@
 }
 
 .item p {
-    margin: 0.25rem 0;
+  margin: 0.25rem 0;
 }
 
 .item p span {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .item p span ::after {
-  content: ' ';
+  content: " ";
 }
 
 .general {
-  background-color: #C5C3FE;
+  background-color: #c5c3fe;
 }
 
 .general.fade {
@@ -40,7 +40,7 @@
 }
 
 .protein {
-  background-color: #FFB5B5;
+  background-color: #ffb5b5;
 }
 
 .station {
@@ -59,7 +59,7 @@
   right: 0.5rem;
 }
 
-@media (max-width: 969px){
+@media (max-width: 969px) {
   .item {
     font-size: 1rem;
   }
@@ -69,27 +69,27 @@
   }
 }
 
-@media (max-width: 790px){
+@media (max-width: 790px) {
   .title {
     font-size: 1.1rem;
   }
 }
 
-@media (max-width: 780px){
+@media (max-width: 780px) {
   .stamp {
     font-size: 0.85rem;
     border: 0.2rem solid black;
   }
 }
 
-@media (max-width: 675px){
+@media (max-width: 675px) {
   .item {
     padding-bottom: 0.625rem;
     padding-top: 2.35rem;
   }
 }
-  
-@media (max-width: 675px) and (min-width: 601px){
+
+@media (max-width: 675px) and (min-width: 601px) {
   .stamp {
     font-size: 0.8rem;
     transform: unset;
@@ -103,9 +103,9 @@
   }
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px) {
   .item {
     justify-content: flex-start;
     padding-top: 2.4rem;
   }
-} 
+}
