@@ -19,7 +19,7 @@ REACT_APP_SENTRY_URL=<Sentry public key>
 
 To run in development mode.
 
-### `yarn test`
+### `yarn test:watch`
 
 To run tests in watch mode.
 
